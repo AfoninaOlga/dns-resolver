@@ -32,7 +32,7 @@ class Resolver:
     def resolve(self, query):
         if query in self.cached_queries:
             return self.cached_queries[query]
-        dns_query = dns.message.make_query(qname=query, rdtype=dns.rdatatype.A, rdclass=dns.rdataclass.IN)
+        dns_query = dns.message.make_query(qname=query, rdtype=dns.rdatatype.A)
         response = None
         for server in self.root_servers:
             response = self.resolve_recursively(dns_query, server)
@@ -74,8 +74,7 @@ class Resolver:
                     if resolved:
                         response.answer = resolved.answer
                         if not response.answer:
-                            print(response.answer)
-                            print(f'{query} no answer')
+                            print(f'{query} has no answer section')
                         else:
                             for ans in response.answer:
                                 print(ans)
