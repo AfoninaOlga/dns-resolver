@@ -15,5 +15,5 @@ python3 resolver.py
 
 To resolve name:
 ```
-dig <name> @127.0.0.1
+dig @127.0.0.1 <name>
 ```
